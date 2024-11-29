@@ -1,0 +1,65 @@
+
+<div class="float-container">
+  <div>
+    <div  id="nav-bar" class="float-child">
+      <input (click)="toggle()" id="nav-toggle" type="checkbox"/>
+      <div id="nav-header"><a id="nav-title">  Menu</a>
+        <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+        <hr/>
+      </div>
+      <div id="nav-content" >
+        <a class="nav-button" *ngFor="let item of menuItems;index as i" mat-list-item [routerLink]="'/'+item"><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon={{menuIcons[i]}}></mat-icon><span> {{item=="expedicoes"? "Expedições":item | titlecase}} </span></a>
+        <!-- <hr/>
+        <div class="nav-button"><i class="fas fa-gem"></i><span>Codepen Pro</span></div> -->
+        <div id="nav-content-highlight"></div>
+      </div>
+      <input id="nav-footer-toggle" type="checkbox"/>
+      <div id="nav-footer" style="height: 80px;">
+        <div id="nav-footer-heading" style="display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-around;">
+          <div>
+            <div style="display: flex;flex-direction: row;justify-content: space-around;align-items: center;margin-right: 40px;">
+              <div id="nav-footer-avatar"><img src={{user.image}}/></div>
+              <div id="nav-footer-titlebox">
+                <a id="nav-footer-title" target="_blank">{{user.user_name}}</a>
+                <span id="nav-footer-subtitle">{{user.is_adm==false?"Comum":"Admin"}}</span>
+              </div>
+            </div>
+            
+            <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
+          </div>
+          <div>
+            <button type="submit" class="custom-btn" (click)="logoff()">Sair</button>
+          </div>
+         
+        </div>
+        
+       
+      </div>
+    </div>
+
+   
+    
+</div>
+<div class="header" [class.suspended]="test"
+[class.active]="!test">
+  Bem-vindo(a) ao Sistema <b>Controle de estoque</b>!
+</div>
+
+<div #el class="float-child"
+  [class.suspended]="test"
+  [class.active]="!test"
+  style="margin-left: 450px;">
+      
+        <router-outlet></router-outlet>
+      
+  <div class="footer"
+  [class.suspended]="test"
+[class.active]="!test">
+    <b>Controle de Estoque</b> - © 2023 Todos os direitos reservados
+  </div>
+  
+</div>
+
